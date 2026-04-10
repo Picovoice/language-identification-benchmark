@@ -1,0 +1,8 @@
+*.log
+.idea/
+__pycache__/
+cache/
+env/
+tmp/
+venv/
+.venv/

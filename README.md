@@ -74,8 +74,7 @@ python3 -m benchmark \
 
 ## Results
 
-Measurement is carried on an `Ubuntu 24.04.3 LTS` machine with Intel CPU (`Intel(R) Core(TM) i7-1185G7 @ 3.00GHz`),
-16 GB of RAM, and NVMe storage.
+This benchmark has been developed and tested on `Ubuntu 22.04`, using `Python 3.10`, and a consumer-grade AMD CPU (`AMD Ryzen 9 5900X (12) @ 3.70GHz`).
 
 ### Accuracy
 
@@ -90,8 +89,8 @@ Measurement is carried on an `Ubuntu 24.04.3 LTS` machine with Intel CPU (`Intel
 
 |     Engine      | Model Size |
 |:---------------:|:----------:|
-|  Picovoice Bat  |    5.1MB   |
-|   SpeechBrain   |  115.20MB  |
+|  Picovoice Bat  |    5.18MB  |
+|   SpeechBrain   |  117.57MB  |
 
 ![](./results/plots/mem.png)
 
@@ -99,7 +98,7 @@ Measurement is carried on an `Ubuntu 24.04.3 LTS` machine with Intel CPU (`Intel
 
 |     Engine      |  Core-Hour |
 |:---------------:|:----------:|
-|  Picovoice Bat  |    0.62    |
-|   SpeechBrain   |    5.20    |
+|  Picovoice Bat  |    0.44    |
+|   SpeechBrain   |    3.90    |
 
 ![](./results/plots/cpu.png)

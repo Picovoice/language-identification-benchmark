@@ -1,5 +1,5 @@
 matplotlib
-numpy==2.3.5
+numpy==2.2.6
 psutil
 pvbat==1.0.1
 soundfile

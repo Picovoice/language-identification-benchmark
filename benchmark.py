@@ -7,6 +7,8 @@ from typing import (
     Dict
 )
 
+import torch
+
 from pvbat import BatLanguages
 from dataset import *
 from engine import *
@@ -38,6 +40,8 @@ def main() -> None:
     parser.add_argument("--picovoice-access-key")
     parser.add_argument("--picovoice-device", default="cpu:1")
     args = parser.parse_args()
+
+    torch.set_num_threads(1)
 
     dataset = Datasets(args.dataset)
     engine = Engines(args.engine)

@@ -26,6 +26,14 @@ $$
 ACCURACY = \frac{CORRECT}{INCORRECT + CORRECT}
 $$
 
+### Memory Usage
+
+Memory usage is gathered in two places:
+- `init` memory is a measure of the memory used when the engine "initializes" (loads the model, prepares internal state, etc).
+- `proc` memory is a measure of the additional memory used whilst "processing" audio and producing an inference.
+
+When combined these two values represent "peak" memory usage, or the total memory required to run the engine and produce an inference from audio.
+
 ## Engines
 
 - [Picovoice Bat](https://picovoice.ai/)

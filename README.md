@@ -26,18 +26,22 @@ $$
 ACCURACY = \frac{CORRECT}{INCORRECT + CORRECT}
 $$
 
-### Model Size
+### Memory Usage
 
-The size of the model on init is used to evaluate the memory consumption of the language identification engine, indicating the minimum amount of ram required to use the engine.
+Memory usage is gathered in two places:
+- `init` memory is a measure of the memory used when the engine "initializes" (loads the model, prepares internal state, etc).
+- `proc` memory is a measure of the additional memory used whilst "processing" audio and producing an inference.
+
+When combined these two values represent "peak" memory usage, or the total memory required to run the engine and produce an inference from audio.
 
 ## Engines
 
 - [Picovoice Bat](https://picovoice.ai/)
-- [SpeechBrain](https://github.com/speechbrain/speechbrain)
+- [SpeechBrain](https://github.com/speechbrain/speechbrain) ([model](https://huggingface.co/speechbrain/lang-id-voxlingua107-ecapa))
 
 ## Usage
 
-This benchmark has been developed and tested on `Ubuntu 24.04` using `Python 3.12`.
+This benchmark has been developed and tested on `Ubuntu 22.04` using `Python 3.10`.
 
 1. Install the requirements:
 
@@ -85,15 +89,6 @@ This benchmark has been developed and tested on `Ubuntu 22.04`, using `Python 3.
 
 ![](./results/plots/accuracy.png)
 
-### Model Size
-
-|     Engine      | Model Size |
-|:---------------:|:----------:|
-|  Picovoice Bat  |    5.18MB  |
-|   SpeechBrain   |  117.57MB  |
-
-![](./results/plots/mem.png)
-
 ### CPU
 
 |     Engine      |  Core-Hour |
@@ -102,3 +97,19 @@ This benchmark has been developed and tested on `Ubuntu 22.04`, using `Python 3.
 |   SpeechBrain   |    3.90    |
 
 ![](./results/plots/cpu.png)
+
+### Memory
+
+|     Engine      | Peak Memory                                   |
+|:---------------:|:---------------------------------------------:|
+|  Picovoice Bat  |    5.36MB *(   5.14MB init +   0.22MB proc )* |
+|   SpeechBrain   |  333.35MB *( 113.43MB init + 219.92MB proc )* |
+
+![](./results/plots/mem.png)
+
+### Model Size
+
+|     Engine      | Model Size |
+|:---------------:|:----------:|
+|  Picovoice Bat  |    4.3MB   |
+|   SpeechBrain   |   84.5MB   |

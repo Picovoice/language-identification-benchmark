@@ -1,6 +1,7 @@
 {
   "accuracy": 0.9285714285714286,
-  "size_bytes": 5435392,
+  "init_size_bytes": 5386240,
+  "proc_size_bytes": 233472,
   "process_time": 13.669870495563373,
   "audio_time": 3101.7898749999977
 }

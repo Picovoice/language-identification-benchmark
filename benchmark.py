@@ -75,6 +75,11 @@ def main() -> None:
             total_process_time += process_time
             total_audio_time += audio_time
 
+    with measure_peak_memory() as peak_memory_result:
+        for language in BatLanguages:
+            for i in range(dataset.size(language)):
+                _, _ = engine.process(dataset.get(language, i))
+
     accuracy = metric.compute(num_correct, num_wrong)
     rtf = total_process_time / total_audio_time
 
@@ -84,7 +89,8 @@ def main() -> None:
     results_path = os.path.join(RESULTS_FOLDER, "data", args.dataset, f"{args.engine}.json")
     results = {
         args.metric: accuracy,
-        "size_bytes": engine.size_bytes,
+        "init_size_bytes": engine.size_bytes,
+        "proc_size_bytes": peak_memory_result['peak_mem'],
         "process_time": total_process_time,
         "audio_time": total_audio_time,
     }

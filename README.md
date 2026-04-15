@@ -33,11 +33,11 @@ The size of the model on init is used to evaluate the memory consumption of the 
 ## Engines
 
 - [Picovoice Bat](https://picovoice.ai/)
-- [SpeechBrain](https://github.com/speechbrain/speechbrain)
+- [SpeechBrain](https://github.com/speechbrain/speechbrain) ([model](https://huggingface.co/speechbrain/lang-id-voxlingua107-ecapa))
 
 ## Usage
 
-This benchmark has been developed and tested on `Ubuntu 24.04` using `Python 3.12`.
+This benchmark has been developed and tested on `Ubuntu 22.04` using `Python 3.10`.
 
 1. Install the requirements:
 

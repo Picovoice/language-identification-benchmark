@@ -20,19 +20,28 @@ For this benchmark, audio from various languages is fed into the engine and and 
 
 ### Accuracy Percentage
 
-The Accuracy metric is determined by taking the simple percentage of correct inferences over the total inferences:
+The **Accuracy** metric is determined by taking the simple percentage of correct inferences over the total inferences:
 
 $$
 ACCURACY = \frac{CORRECT}{INCORRECT + CORRECT}
 $$
 
-### Memory Usage
+### CPU Core Hour Ratio:
 
-Memory usage is gathered in two places:
+We define **CPU Core Hour Ratio** as the amount of CPU Core Hour it takes to process an hour of audio.
+This is calculated by taking the sum of the time spent processing audio over the sum of the audio duration processed.
+
+### Peak Memory (RAM) Usage:
+
+**Peak Memory (RAM) Usage** is gathered in two places:
 - `init` memory is a measure of the memory used when the engine "initializes" (loads the model, prepares internal state, etc).
 - `proc` memory is a measure of the additional memory used whilst "processing" audio and producing an inference.
 
-When combined these two values represent "peak" memory usage, or the total memory required to run the engine and produce an inference from audio.
+When combined these two values represent **Peak Memory (RAM) Usage**, or the total memory required to run the engine and produce an inference from audio.
+
+### Model Size:
+
+We define **Model Size** as the file size of the binary files needed to run language identification, excluding common Python packages like PyTorch. For example, if a model is to be downloaded from Hugging Face, then we only count the binary files there (which can be `.safetensors`, `.bin`, `.gguf`, `.pt`, `.pth`, `.onnx`, `etc.`).
 
 ## Engines
 

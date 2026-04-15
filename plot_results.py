@@ -127,8 +127,8 @@ def _plot_average_metric(
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(True)
-    ax.set_yticks([75, 85, 95])
-    ax.set_ylim(75)
+    ax.set_yticks([80, 90, 100])
+    ax.set_ylim(80)
 
     plot_path = os.path.join(
         RESULTS_FOLDER,

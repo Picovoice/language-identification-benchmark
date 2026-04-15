@@ -2,7 +2,7 @@
 
 Made in Vancouver, Canada by [Picovoice](https://picovoice.ai)
 
-This repository serves as a minimalist and extensible framework designed for benchmarking various language indentification engines in the context of streaming audio.
+This repository serves as a minimalist and extensible framework designed for benchmarking various language identification engines in the context of streaming audio.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ For this benchmark, audio from various languages is fed into the engine and and 
 
 ### Accuracy Percentage
 
-The **Accuracy** metric is determined by taking the simple percentage of correct inferences over the total inferences:
+The **Accuracy** metric is determined by taking the simple percentage of correct identifications over the total identifications:
 
 $$
 ACCURACY = \frac{CORRECT}{INCORRECT + CORRECT}
@@ -35,9 +35,9 @@ This is calculated by taking the sum of the time spent processing audio over the
 
 **Peak Memory (RAM) Usage** is gathered in two places:
 - `init` memory is a measure of the memory used when the engine "initializes" (loads the model, prepares internal state, etc).
-- `proc` memory is a measure of the additional memory used whilst "processing" audio and producing an inference.
+- `proc` memory is a measure of the additional memory used whilst "processing" audio and producing language identification scores.
 
-When combined these two values represent **Peak Memory (RAM) Usage**, or the total memory required to run the engine and produce an inference from audio.
+When combined these two values represent **Peak Memory (RAM) Usage**, or the total memory required to run the engine and produce language identification scores from audio.
 
 ### Model Size:
 

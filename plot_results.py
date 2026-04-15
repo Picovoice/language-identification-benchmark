@@ -126,7 +126,7 @@ def _plot_average_metric(
     ax.set_ylabel(f"{metric.value} {more_info}", fontsize=12)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.spines["left"].set_visible(False)
+    ax.spines["left"].set_visible(True)
     ax.set_yticks([75, 85, 95])
     ax.set_ylim(75)
 
@@ -196,26 +196,40 @@ def _plot_mem(
         show: bool) -> None:
     fig, ax = plt.subplots(figsize=(6, 4))
     for engine in Engines:
-        size_bytes = 0.0
+        init_size_bytes = 0.0
+        proc_size_bytes = 0.0
         for dataset in Datasets:
-            size_bytes += results[dataset][engine]["size_bytes"]
-        size_bytes /= len(Datasets)
+            init_size_bytes += results[dataset][engine]["init_size_bytes"]
+            proc_size_bytes += results[dataset][engine]["proc_size_bytes"]
+        init_size_bytes /= len(Datasets)
+        proc_size_bytes /= len(Datasets)
 
-        size_bytes /= 1024 * 1024
+        init_size_bytes /= 1024 * 1024
+        proc_size_bytes /= 1024 * 1024
 
         ax.barh(
             ENGINE_PRINT_NAMES[engine],
-            size_bytes,
+            init_size_bytes,
             height=0.5,
             color=ENGINE_COLORS[engine],
             edgecolor="none",
             label=ENGINE_PRINT_NAMES[engine],
         )
-        ax.text(
-            size_bytes + 10,
+        ax.barh(
             ENGINE_PRINT_NAMES[engine],
-            f"{size_bytes:.2f}MB",
-            ha="center",
+            proc_size_bytes,
+            left=init_size_bytes,
+            height=0.5,
+            color=ENGINE_COLORS[engine],
+            alpha=0.5,
+            edgecolor="none",
+            label=ENGINE_PRINT_NAMES[engine],
+        )
+        ax.text(
+            init_size_bytes + proc_size_bytes + 10,
+            ENGINE_PRINT_NAMES[engine],
+            f"{init_size_bytes:.2f}MB Init\n{proc_size_bytes:.2f}MB Proc",
+            ha="left",
             va="center",
             fontsize=12,
             color=ENGINE_COLORS[engine],
@@ -225,7 +239,7 @@ def _plot_mem(
     ax.spines["bottom"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.set_xticks([])
-    plt.title("MB required to initialize the model", fontsize=12)
+    plt.title("Peak memory usage (MB)", fontsize=12)
     plot_path = os.path.join(
         RESULTS_FOLDER,
         "plots",

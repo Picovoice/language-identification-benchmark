@@ -26,10 +26,6 @@ $$
 ACCURACY = \frac{CORRECT}{INCORRECT + CORRECT}
 $$
 
-### Model Size
-
-The size of the model on init is used to evaluate the memory consumption of the language identification engine, indicating the minimum amount of ram required to use the engine.
-
 ## Engines
 
 - [Picovoice Bat](https://picovoice.ai/)
@@ -85,15 +81,6 @@ This benchmark has been developed and tested on `Ubuntu 22.04`, using `Python 3.
 
 ![](./results/plots/accuracy.png)
 
-### Model Size
-
-|     Engine      | Model Size |
-|:---------------:|:----------:|
-|  Picovoice Bat  |    5.18MB  |
-|   SpeechBrain   |  117.57MB  |
-
-![](./results/plots/mem.png)
-
 ### CPU
 
 |     Engine      |  Core-Hour |
@@ -102,3 +89,19 @@ This benchmark has been developed and tested on `Ubuntu 22.04`, using `Python 3.
 |   SpeechBrain   |    3.90    |
 
 ![](./results/plots/cpu.png)
+
+### Memory
+
+|     Engine      | Peak Memory                               |
+|:---------------:|:-----------------------------------------:|
+|  Picovoice Bat  |    5.36MB (  5.14MB init +   0.22MB proc) |
+|   SpeechBrain   |  333.35MB (113.43MB init + 219.92MB proc) |
+
+![](./results/plots/mem.png)
+
+### Model Size
+
+|     Engine      | Model Size |
+|:---------------:|:----------:|
+|  Picovoice Bat  |    4.3MB   |
+|   SpeechBrain   |   84.5MB   |

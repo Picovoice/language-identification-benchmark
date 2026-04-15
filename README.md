@@ -102,8 +102,8 @@ This benchmark has been developed and tested on `Ubuntu 22.04`, using `Python 3.
 
 |     Engine      | Peak Memory                               |
 |:---------------:|:-----------------------------------------:|
-|  Picovoice Bat  |    5.36MB (  5.14MB init +   0.22MB proc) |
-|   SpeechBrain   |  333.35MB (113.43MB init + 219.92MB proc) |
+|  Picovoice Bat  |    5.36MB (   5.14MB init +   0.22MB proc ) |
+|   SpeechBrain   |  333.35MB ( 113.43MB init + 219.92MB proc ) |
 
 ![](./results/plots/mem.png)
 
